@@ -62,7 +62,7 @@ $page = 0;
 
 function page() {
 	global $page;
-	printf('<span class="page">%d</span>', ++$page);
+	printf('<span class="page"><a href="#contents">&crarr;</a> %d</span>', ++$page);
 }
 
 function same() {
@@ -75,8 +75,6 @@ function he($s) {
 	return htmlentities($s, null, 'UTF-8');
 }
 ?>
-
-<a href="https://github.com/InfinitySoft/ThemePlus" target="_blank"><img style="position: fixed; top: 0; right: 0; border: 0; z-index: 2;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
 
 <div id="impress">
 
@@ -123,18 +121,18 @@ function he($s) {
 	</div>
 
 	<!-- Inhaltsverzeichnis ---------------------------------------------------------------------------------------- -->
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
+    <div id="contents" class="step slide"<?php right(); ?> data-rotate-y="-40">
 		<h1>Inhaltsverzeichnis</h1>
-        <ol style="font-size: 75%;">
+        <ol style="font-size: 65%;">
 			<li>
-				Über Theme+
+				<a href="#about">Über Theme+</a>
 				<ul>
 					<li>Was ist Theme+ <em>&bull; Idee &amp; Geschichte</em></li>
 					<li>Was kann Theme+ <em>&bull; Funktionen</em></li>
 				</ul>
 			</li>
 			<li>
-				Theme+ im Einsatz
+				<a href="#usage">Theme+ im Einsatz</a>
 				<ul>
 					<li>Installation</li>
 					<li>Variablen</li>
@@ -146,8 +144,16 @@ function he($s) {
 					<li>Was man noch wissen sollte?!</li>
 				</ul>
 			</li>
+	        <li>
+		        <a href="#designer">Theme+ für Template Entwickler</a>
+		        <ul>
+			        <li>Insert-Tags</li>
+			        <li>Dateien und Snippets im Template definieren</li>
+			        <li>Zusätzliche globale Variablen</li>
+		        </ul>
+	        </li>
 			<li>
-				Optimierung
+				<a href="#optimisation">Optimierung</a>
 				<ul>
 					<li>Automatische gzip Komprimierung</li>
 					<li>Framework Wrapper</li>
@@ -156,7 +162,7 @@ function he($s) {
 				</ul>
 			</li>
 	        <li>
-		        API für Entwickler
+		        <a href="#api">API für Entwickler</a>
 		        <ul>
 			        <li>Die Klassen</li>
 			        <li>Dateien und Snipptes im Template einbinden</li>
@@ -167,8 +173,8 @@ function he($s) {
     </div>
 
 	<!-- Über Theme+ ----------------------------------------------------------------------------------------------- -->
-    <div class="step center"<?php right(); ?>>
-		<?php echo page(); ?>
+    <div id="about" class="step center"<?php right(); ?>>
+		<?php $page++; ?>
 	    <h1>Über Theme+</h1>
         <h2>Was ist Theme+?</h2>
 	</div>
@@ -280,8 +286,8 @@ function he($s) {
 
 
 	<!-- Theme+ im Einsatz ----------------------------------------------------------------------------------------- -->
-    <div class="step center"<?php right(); ?>>
-		<?php echo page(); ?>
+    <div id="usage" class="step center"<?php right(); ?>>
+		<?php $page++; ?>
 	    <h1>Theme+ im Einsatz</h1>
         <h2>Installation</h2>
 	</div>
@@ -601,13 +607,97 @@ function he($s) {
 		<img src="images/contao_html6.png">
 	</div>
 
-	<!-- Optimierung ----------------------------------------------------------------------------------------------- -->
-    <div class="step center"<?php right(); ?>>
-		<?php echo page(); ?>
-	    <h1>Optimierung</h1>
+	<!-- Theme+ für Template Entwickler ---------------------------------------------------------------------------- -->
+    <div id="designer" class="step center"<?php right(); ?>>
+		<?php $page++; ?>
+	    <h1>Theme+ für Template Entwickler</h1>
 	</div>
 
     <div class="step slide"<?php right(); ?> data-rotate-y="40">
+		<?php echo page(); ?>
+        <h1>Theme+ für Template Entwickler</h1>
+	    <h2>Insert-Tags</h2>
+	    <div style="font-size: 75%;">
+		    <pre class="brush:plain">{{include_theme_file::ID}}</pre>
+		</div>
+	    <p>Bindet die Datei mit der ID als externe Referenz ein (link/script Tag).</p>
+	    <div style="font-size: 75%;">
+		    <pre class="brush:plain">{{include_theme_file::path/to/file.css|js}}</pre>
+	    </div>
+	    <p>Bindet die Datei path/to/file.css|js als externe Referenz ein (link/script Tag).</p>
+	    <p>Ursprünglich in LAS:</p>
+	    <div style="font-size: 75%;">
+	        <pre class="brush:plain">{{insert_additional_sources::*}}</pre>
+		</div>
+    </div>
+
+    <div class="step slide"<?php right(); ?> data-rotate-y="40">
+		<?php echo page(); ?>
+        <h1>Theme+ für Template Entwickler</h1>
+	    <h2>Insert-Tags</h2>
+	    <div style="font-size: 75%;">
+	        <pre class="brush:plain">{{embed_theme_file::ID}}</pre>
+		</div>
+	    <p>Bettet die Datei mit der ID in die Seite ein (style/script Tag).</p>
+	    <div style="font-size: 75%;">
+	        <pre class="brush:plain">{{embed_theme_file::path/to/file.css|js}}</pre>
+	    </div>
+	    <p>Bettet die Datei path/to/file.css|js in die Seite ein (style/script Tag).</p>
+	    <p>Ursprünglich in LAS:</p>
+	    <div style="font-size: 75%;">
+	        <pre class="brush:plain">{{include_additional_sources::*}}</pre>
+	    </div>
+    </div>
+
+    <div class="step slide"<?php right(); ?> data-rotate-y="40">
+		<?php echo page(); ?>
+        <h1>Theme+ für Template Entwickler</h1>
+	    <h2>Dateien und Snippets im Template definieren</h2>
+	    <div style="font-size: 50%">
+		    <pre class="brush:php">&lt;?php
+$objFile = new CssCode('body {
+  font-family: Verdana, sans;
+}', 'BodyFont');
+
+$GLOBALS['TL_CSS'][] = $objFile;
+?&gt;</pre>
+		</div>
+	    <p>Das funktioniert auch Analog mit den anderen Klassen (sie API für Entwickler).</p>
+    </div>
+
+    <div class="step slide"<?php right(); ?> data-rotate-y="40">
+		<?php echo page(); ?>
+        <h1>Theme+ für Template Entwickler</h1>
+	    <h2>Zusätzliche globale Variablen</h2>
+	    <p><code>$GLOBALS['TL_JAVASCRIPT_BODY']</code>, JavaScripts die geziehlt im <code>&lt;body&gt;</code> anstatt im <code>&lt;head&gt;</code> eingefügt werden sollen.</p>
+	    <div style="font-size: 50%">
+		    <pre class="brush:php">&lt;?php
+$objFile = new LocalJavaScriptFile('tl_files/scripts/script.js');
+
+$GLOBALS['TL_JAVASCRIPT_BODY'][] = $objFile;
+?&gt;</pre>
+		</div>
+    </div>
+
+    <div class="step slide"<?php right(); ?> data-rotate-y="40">
+		<?php echo page(); ?>
+        <h1>Theme+ für Template Entwickler</h1>
+	    <h2>Zusätzliche globale Variablen</h2>
+	    <p><code>$GLOBALS['TL_JAVASCRIPT_CODE_BODY']</code>, JavaScript Code der geziehlt im <code>&lt;body&gt;</code> anstatt im <code>&lt;head&gt;</code> eingefügt werden sollen.</p>
+	    <div style="font-size: 50%">
+		    <pre class="brush:php">&lt;?php
+$GLOBALS['TL_JAVASCRIPT_CODE_BODY'][] = 'alert("Happy new year?!");';
+?&gt;</pre>
+		</div>
+    </div>
+
+	<!-- Optimierung ----------------------------------------------------------------------------------------------- -->
+    <div id="optimisation" class="step center"<?php right(); ?>>
+		<?php $page++; ?>
+	    <h1>Optimierung</h1>
+	</div>
+
+    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
         <h1>Optimierung</h1>
 	    <ul>
@@ -618,7 +708,7 @@ function he($s) {
 	    </ul>
     </div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
         <h1>Optimierung</h1>
 	    <h2>Automatische gzip Komprimierung</h2>
@@ -626,17 +716,17 @@ function he($s) {
 	    <p>Contao 2.10+ setzt auf mod_deflate.</p>
     </div>
 
-	<div class="step screen"<?php right(); ?> data-rotate-y="40">
+	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
 		<img src="images/10k.png" width="960" style="margin-top:49px;">
 	</div>
 
-	<div class="step screen"<?php right(); ?> data-rotate-y="40">
+	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
 		<img src="images/50k.png" width="960" style="margin-top:49px;">
 	</div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
         <h1>Optimierung</h1>
 	    <h2>Automatische gzip Komprimierung</h2>
@@ -661,19 +751,19 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 	    </div>
     </div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
         <h1>Optimierung</h1>
 	    <h2>Framework Wrapper</h2>
 	    <p>Ermöglicht den (nahezu) konfliktlosen Einsatz mehrerer Frameworks parallel.</p>
     </div>
 
-	<div class="step screen"<?php right(); ?> data-rotate-y="40">
+	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
 		<img src="images/contao_file6.png">
 	</div>
 
-	<div class="step slide"<?php right(); ?> data-rotate-y="40">
+	<div class="step slide"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
 		<h1>Optimierung</h1>
 		<h2>Framework Wrapper</h2>
@@ -687,7 +777,7 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 })(jQuery);</pre>
 	</div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
         <h1>Optimierung</h1>
 	    <h2>JavaScript Load Blocking verhindern</h2>
@@ -695,17 +785,17 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 	    <p>Verhindert Blockieren des Seitenaufbaus beim <strong>laden</strong> der JavaScript Dateien.</p>
     </div>
 
-	<div class="step screen"<?php right(); ?> data-rotate-y="40">
+	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
 		<img src="images/contao_file7.png">
 	</div>
 
-	<div class="step screen"<?php right(); ?> data-rotate-y="40">
+	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
 		<img src="images/contao_layout3_a.png">
 	</div>
 
-	<div class="step slide"<?php right(); ?> data-rotate-y="40">
+	<div class="step slide"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
 		<h1>Optimierung</h1>
 		<h2>Position im HEAD</h2>
@@ -721,7 +811,7 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 </html>'); ?></pre>
 	</div>
 
-	<div class="step slide"<?php right(); ?> data-rotate-y="40">
+	<div class="step slide"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
 		<h1>Optimierung</h1>
 		<h2>Position am Ende des BODY</h2>
@@ -737,7 +827,7 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 </html>'); ?></pre>
 	</div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
         <h1>Optimierung</h1>
 	    <h2>JavaScript Execution Blocking verhindern</h2>
@@ -745,23 +835,33 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 	    <p>Verhindert Blockieren des Seitenaufbaus beim <strong>ausführen</strong> der JavaScript Dateien.</p>
     </div>
 
-	<div class="step screen"<?php right(); ?> data-rotate-y="40">
+	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
 		<img src="images/contao_layout3_b.png">
 	</div>
 
-	<div class="step screen"<?php right(); ?> data-rotate-y="40">
+	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
 		<img src="images/contao_html4.png">
 	</div>
 
-	<!-- API ------------------------------------------------------------------------------------------------------- -->
-    <div class="step center"<?php right(); ?>>
+	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
+		<img src="images/contao_optimice1.png">
+	</div>
+
+	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
+		<?php echo page(); ?>
+		<img src="images/contao_optimice2.png">
+	</div>
+
+	<!-- API ------------------------------------------------------------------------------------------------------- -->
+    <div id="api" class="step center"<?php right(); ?>>
+		<?php $page++; ?>
 	    <h1>API für Entwickler</h1>
 	</div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="40">
 		<?php echo page(); ?>
         <h1>API für Entwickler</h1>
 	    <ul>
@@ -771,14 +871,14 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 	    </ul>
     </div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40" style="width: 1015px">
+    <div class="step slide"<?php right(); ?> data-rotate-y="40" style="width: 1015px">
 		<?php echo page(); ?>
         <h1>API für Entwickler</h1>
 	    <h2>Klassenhierarchie</h2>
 		<p class="center"><img src="images/classes.png" style="margin: 0 -60px;"></p>
     </div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="40">
 		<?php echo page(); ?>
         <h1>API für Entwickler</h1>
 	    <h2>Klassen für lokale Dateien</h2>
@@ -789,7 +889,7 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 	    </ul>
     </div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="40">
 		<?php echo page(); ?>
         <h1>API für Entwickler</h1>
 	    <h2>LocalThemePlusFile</h2>
@@ -821,7 +921,7 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 	    </div>
     </div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="40">
 		<?php echo page(); ?>
         <h1>API für Entwickler</h1>
 	    <h2>LocalCssFile</h2>
@@ -838,7 +938,7 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 		</div>
     </div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="40">
 		<?php echo page(); ?>
         <h1>API für Entwickler</h1>
 	    <h2>LocalJavaScriptFile</h2>
@@ -858,7 +958,7 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 		</div>
     </div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="40">
 		<?php echo page(); ?>
         <h1>API für Entwickler</h1>
 	    <h2>Klassen für externe Dateien</h2>
@@ -869,7 +969,7 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 	    </ul>
     </div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="40">
 		<?php echo page(); ?>
         <h1>API für Entwickler</h1>
 	    <h2>ExternalThemePlusFile</h2>
@@ -889,7 +989,7 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 	    </div>
     </div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="40">
 		<?php echo page(); ?>
         <h1>API für Entwickler</h1>
 	    <h2>ExternalCssFile</h2>
@@ -903,7 +1003,7 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 		</div>
     </div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="40">
 		<?php echo page(); ?>
         <h1>API für Entwickler</h1>
 	    <h2>ExternalJavaScriptFile</h2>
@@ -917,7 +1017,7 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 		</div>
     </div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="40">
 		<?php echo page(); ?>
         <h1>API für Entwickler</h1>
 	    <h2>Klassen für Code Snippets</h2>
@@ -927,7 +1027,7 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 	    </ul>
     </div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="40">
 		<?php echo page(); ?>
         <h1>API für Entwickler</h1>
 	    <h2>CssCode</h2>
@@ -941,7 +1041,7 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 		</div>
     </div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="40">
 		<?php echo page(); ?>
         <h1>API für Entwickler</h1>
 	    <h2>JavaScriptCode</h2>
@@ -955,7 +1055,7 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 		</div>
     </div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="40">
 		<?php echo page(); ?>
         <h1>API für Entwickler</h1>
 	    <h2>Klassen für Aggregation</h2>
@@ -966,21 +1066,19 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 	    </ul>
     </div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="40">
 		<?php echo page(); ?>
         <h1>API für Entwickler</h1>
 	    <h2>FileAggregator</h2>
 	    <div style="font-size: 50%">
 		    <pre class="brush:php">abstract class FileAggregator
     extends LocalThemePlusFile {
-  public function __construct($strScope);
-
-  public function getScope();
+  public function __construct();
 }</pre>
 		</div>
     </div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="40">
 		<?php echo page(); ?>
         <h1>API für Entwickler</h1>
 	    <h2>CssFileAggregator</h2>
@@ -992,7 +1090,7 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 		</div>
     </div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="40">
 		<?php echo page(); ?>
         <h1>API für Entwickler</h1>
 	    <h2>JavaScriptFileAggregator</h2>
@@ -1004,64 +1102,8 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 		</div>
     </div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
-		<?php echo page(); ?>
-        <h1>API für Entwickler</h1>
-	    <h2>Dateien und Snippets im Template definieren</h2>
-	    <div style="font-size: 50%">
-		    <pre class="brush:php">&lt;?php
-$objFile = new CssCode('body {
-  font-family: Verdana, sans;
-}', 'BodyFont');
-
-$GLOBALS['TL_CSS'][] = $objFile;
-?&gt;</pre>
-		</div>
-	    <p>Das funktioniert auch Analog mit den anderen Klassen.</p>
-    </div>
-
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
-		<?php echo page(); ?>
-        <h1>API für Entwickler</h1>
-	    <h2>Zusätzliche globale Variablen</h2>
-	    <p><code>$GLOBALS['TL_JAVASCRIPT_BODY']</code>, JavaScripts die geziehlt im <code>&lt;body&gt;</code> anstatt im <code>&lt;head&gt;</code> eingefügt werden sollen.</p>
-	    <div style="font-size: 50%">
-		    <pre class="brush:php">&lt;?php
-$objFile = new LocalJavaScriptFile('tl_files/scripts/script.js');
-
-$GLOBALS['TL_JAVASCRIPT_BODY'][] = $objFile;
-?&gt;</pre>
-		</div>
-    </div>
-
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
-		<?php echo page(); ?>
-        <h1>API für Entwickler</h1>
-	    <h2>Zusätzliche globale Variablen</h2>
-	    <p><code>$GLOBALS['TL_JAVASCRIPT_CODE_BODY']</code>, JavaScript Code der geziehlt im <code>&lt;body&gt;</code> anstatt im <code>&lt;head&gt;</code> eingefügt werden sollen.</p>
-	    <div style="font-size: 50%">
-		    <pre class="brush:php">&lt;?php
-$GLOBALS['TL_JAVASCRIPT_CODE_BODY'][] = 'tl_files/scripts/dojo.js';
-?&gt;</pre>
-		</div>
-    </div>
-
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
-		<?php echo page(); ?>
-        <h1>API für Entwickler</h1>
-	    <h2>Zusätzliche globale Variablen</h2>
-	    <p><code>$GLOBALS['TL_JAVASCRIPT_FRAMEWORK']</code>, JavaScripts die zum Framework gehören, diese werden immer zuerst eingebunden (vor <code>$GLOBALS['TL_JAVASCRIPT']</code>).</p>
-	    <div style="font-size: 50%">
-		    <pre class="brush:php">&lt;?php
-$GLOBALS['TL_JAVASCRIPT_CODE_BODY'][] = '$(function() {
-  alert("I'm a code run at the end of &lt;body&gt;!");
-});';
-?&gt;</pre>
-		</div>
-    </div>
-
 	<?php /*
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="40">
 		<?php echo page(); ?>
         <h1>API für Entwickler</h1>
 	    <h2>HOOK TL_JAVASCRIPT_FRAMEWORK</h2>
@@ -1076,7 +1118,7 @@ $GLOBALS['TL_JAVASCRIPT_CODE_BODY'][] = '$(function() {
     </div>
     */ ?>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="40">
 		<?php echo page(); ?>
         <h1>API für Entwickler</h1>
 	    <h2>HOOK <code>$GLOBALS['TL_HOOKS']['generateFrameworkCss']</code></h2>
@@ -1098,7 +1140,7 @@ class MyClass
 		</div>
     </div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="40">
 		<?php echo page(); ?>
         <h1>API für Entwickler</h1>
 	    <h2>HOOK <code>$GLOBALS['TL_HOOKS']['renderVariable']</code></h2>
@@ -1120,7 +1162,7 @@ class MyClass
 		</div>
     </div>
 
-    <div class="step slide"<?php right(); ?> data-rotate-y="-40">
+    <div class="step slide"<?php right(); ?> data-rotate-y="40">
 		<?php echo page(); ?>
         <h1>API für Entwickler</h1>
 	    <h2>HOOK <code>$GLOBALS['TL_HOOKS']['replaceUndefinedVariable']</code></h2>
@@ -1153,6 +1195,11 @@ class MyClass
 		    Oder schaut in das <a href="https://www.contao-community.de/forumdisplay.php?127-theme_plus" target="_blank">Forum</a> zu Theme+.</p>
     </div>
 </div>
+
+<a href="https://github.com/InfinitySoft/ThemePlus" target="_blank"
+	style="position: fixed; top: 0; right: 0; border: 0; z-index: 10;">
+	<img src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub">
+</a>
 
 <script src="js/impress.js"></script>
 <script>impress().init();</script>
