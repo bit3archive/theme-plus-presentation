@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=1024" />
@@ -23,12 +23,7 @@
     <link href="css/style.css" rel="stylesheet" />
 </head>
 
-<body class="impress-not-supported">
-
-<div class="fallback-message">
-    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
-    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
-</div>
+<body>
 
 <?php
 $x = 0;
@@ -76,20 +71,25 @@ function he($s) {
 }
 ?>
 
-<div id="impress">
+<div id="impress" class="normal-mode not-supported">
 
-	<!-- Start-Slide ----------------------------------------------------------------------------------------------- -->
+	<div class="fallback-message">
+	    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+	    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+	</div>
+
+	<!-- Start-Slide - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<div id="start" class="step"<?php same(); ?>>
 		<p>
-			<img src="images/theme+.svg" alt="Theme+" width="70%">
+			<img src="images/theme+.svg" alt="Theme+" style="width:70%">
 		</p>
 		<p>
 			CSS und JavaScript extrem!
 			<em>&hellip;und noch ein bisschen mehr&hellip;</em>
 		</p>
 		<p>
-			<a href="http://www.contao-konferenz.de" target="_blank"><img src="images/contao_konferenz_logo2012.svg" alt="Contao Konferenz 2012" width="30%"></a>
-			<a href="http://www.infinitysoft.de" target="_blank"><img src="images/infinitysoft-logo.svg" alt="InfinitySoft" width="30%"></a>
+			<a href="http://www.contao-konferenz.de" target="_blank"><img src="images/contao_konferenz_logo2012.svg" alt="Contao Konferenz 2012" style="width:30%"></a>
+			<a href="http://www.infinitysoft.de" target="_blank"><img src="images/infinitysoft-logo.svg" alt="InfinitySoft" style="width:30%"></a>
 		</p>
 	</div>
 
@@ -116,11 +116,11 @@ function he($s) {
 	<div class="step slide center"<?php right(); ?> data-rotate-y="-40">
 		<h1>Impressum</h1>
 		<p>Diese Präsentation ist Teil des Online Angebots von</p>
-		<p><a href="http://www.infinitysoft.de/impressum.html" target="_blank"><img src="images/infinitysoft-logo.svg" alt="InfinitySoft" width="30%"></a></p>
+		<p><a href="http://www.infinitysoft.de/impressum.html" target="_blank"><img src="images/infinitysoft-logo.svg" alt="InfinitySoft" style="width:30%"></a></p>
 		<p>Alle Details finden Sie hier: <a href="http://www.infinitysoft.de/impressum.html" target="_blank">www.infinitysoft.de/impressum.html</a></p>
 	</div>
 
-	<!-- Inhaltsverzeichnis ---------------------------------------------------------------------------------------- -->
+	<!-- Inhaltsverzeichnis - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
     <div id="contents" class="step slide"<?php right(); ?> data-rotate-y="-40">
 		<h1>Inhaltsverzeichnis</h1>
         <ol style="font-size: 65%;">
@@ -172,7 +172,7 @@ function he($s) {
         </ol>
     </div>
 
-	<!-- Über Theme+ ----------------------------------------------------------------------------------------------- -->
+	<!-- Über Theme+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <div id="about" class="step center"<?php right(); ?>>
 		<?php $page++; ?>
 	    <h1>Über Theme+</h1>
@@ -220,7 +220,7 @@ function he($s) {
 	    <h1>Über Theme+</h1>
 	    <h2>Die Entstehungsgeschichte</h2>
 	    <p>Theme+ ist der Nachfolger von layout_additional_sources.</p>
-	    <p class="center"><img src="images/historie.svg" width="70%"></p>
+	    <p class="center"><img src="images/historie.svg" alt="Historie" style="width:70%"></p>
     </div>
 
     <div class="step center"<?php right(); ?> data-rotate-y="40">
@@ -285,7 +285,7 @@ function he($s) {
     </div>
 
 
-	<!-- Theme+ im Einsatz ----------------------------------------------------------------------------------------- -->
+	<!-- Theme+ im Einsatz - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <div id="usage" class="step center"<?php right(); ?>>
 		<?php $page++; ?>
 	    <h1>Theme+ im Einsatz</h1>
@@ -307,12 +307,12 @@ function he($s) {
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_theme.png">
+		<img src="images/contao_theme.png" alt="">
 	</div>
 
 	<div class="step screen"<?php same(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_theme_b.png">
+		<img src="images/contao_theme_b.png" alt="">
 	</div>
 
     <div class="step center"<?php right(); ?> data-rotate-y="-40">
@@ -334,7 +334,7 @@ function he($s) {
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_variable.png">
+		<img src="images/contao_variable.png" alt="">
 	</div>
 
     <div class="step center"<?php right(); ?> data-rotate-y="-40">
@@ -363,32 +363,32 @@ function he($s) {
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_files.png">
+		<img src="images/contao_files.png" alt="">
 	</div>
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_file1.png">
+		<img src="images/contao_file1.png" alt="">
 	</div>
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_file2.png">
+		<img src="images/contao_file2.png" alt="">
 	</div>
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_file3.png">
+		<img src="images/contao_file3.png" alt="">
 	</div>
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_file4.png">
+		<img src="images/contao_file4.png" alt="">
 	</div>
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_file5.png">
+		<img src="images/contao_file5.png" alt="">
 	</div>
 
     <div class="step center"<?php right(); ?> data-rotate-y="-40">
@@ -414,37 +414,37 @@ function he($s) {
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_layout1.png">
+		<img src="images/contao_layout1.png" alt="">
 	</div>
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_layout1_a.png">
+		<img src="images/contao_layout1_a.png" alt="">
 	</div>
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_layout2_a.png">
+		<img src="images/contao_layout2_a.png" alt="">
 	</div>
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_layout3_c.png">
+		<img src="images/contao_layout3_c.png" alt="">
 	</div>
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_page1.png">
+		<img src="images/contao_page1.png" alt="">
 	</div>
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_page2.png">
+		<img src="images/contao_page2.png" alt="">
 	</div>
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_page3.png">
+		<img src="images/contao_page3.png" alt="">
 	</div>
 
     <div class="step center"<?php right(); ?> data-rotate-y="-40">
@@ -466,7 +466,7 @@ function he($s) {
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_systemsettings_a.png">
+		<img src="images/contao_systemsettings_a.png" alt="">
 	</div>
 
     <div class="step center"<?php right(); ?> data-rotate-y="-40">
@@ -509,7 +509,7 @@ function he($s) {
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_systemsettings_b.png">
+		<img src="images/contao_systemsettings_b.png" alt="">
 	</div>
 
 	<div class="step slide"<?php right(); ?> data-rotate-y="-40">
@@ -543,7 +543,7 @@ function he($s) {
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_systemsettings_c.png">
+		<img src="images/contao_systemsettings_c.png" alt="">
 	</div>
 
     <div class="step center"<?php right(); ?> data-rotate-y="-40">
@@ -589,25 +589,25 @@ function he($s) {
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_html1.png">
+		<img src="images/contao_html1.png" alt="">
 	</div>
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_html2.png">
+		<img src="images/contao_html2.png" alt="">
 	</div>
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_html5.png">
+		<img src="images/contao_html5.png" alt="">
 	</div>
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_html6.png">
+		<img src="images/contao_html6.png" alt="">
 	</div>
 
-	<!-- Theme+ für Template Entwickler ---------------------------------------------------------------------------- -->
+	<!-- Theme+ für Template Entwickler - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
     <div id="designer" class="step center"<?php right(); ?>>
 		<?php $page++; ?>
 	    <h1>Theme+ für Template Entwickler</h1>
@@ -691,7 +691,7 @@ $GLOBALS['TL_JAVASCRIPT_CODE_BODY'][] = 'alert("Happy new year?!");';
 		</div>
     </div>
 
-	<!-- Optimierung ----------------------------------------------------------------------------------------------- -->
+	<!-- Optimierung - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <div id="optimisation" class="step center"<?php right(); ?>>
 		<?php $page++; ?>
 	    <h1>Optimierung</h1>
@@ -718,12 +718,12 @@ $GLOBALS['TL_JAVASCRIPT_CODE_BODY'][] = 'alert("Happy new year?!");';
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/10k.png" width="960" style="margin-top:49px;">
+		<img src="images/10k.png" alt="" width="960" style="margin-top:49px;">
 	</div>
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/50k.png" width="960" style="margin-top:49px;">
+		<img src="images/50k.png" alt="" width="960" style="margin-top:49px;">
 	</div>
 
     <div class="step slide"<?php right(); ?> data-rotate-y="-40">
@@ -760,7 +760,7 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_file6.png">
+		<img src="images/contao_file6.png" alt="">
 	</div>
 
 	<div class="step slide"<?php right(); ?> data-rotate-y="-40">
@@ -787,12 +787,12 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_file7.png">
+		<img src="images/contao_file7.png" alt="">
 	</div>
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_layout3_a.png">
+		<img src="images/contao_layout3_a.png" alt="">
 	</div>
 
 	<div class="step slide"<?php right(); ?> data-rotate-y="-40">
@@ -837,25 +837,25 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_layout3_b.png">
+		<img src="images/contao_layout3_b.png" alt="">
 	</div>
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_html4.png">
+		<img src="images/contao_html4.png" alt="">
 	</div>
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_optimice1.png">
+		<img src="images/contao_optimice1.png" alt="">
 	</div>
 
 	<div class="step screen"<?php right(); ?> data-rotate-y="-40">
 		<?php echo page(); ?>
-		<img src="images/contao_optimice2.png">
+		<img src="images/contao_optimice2.png" alt="">
 	</div>
 
-	<!-- API ------------------------------------------------------------------------------------------------------- -->
+	<!-- API - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <div id="api" class="step center"<?php right(); ?>>
 		<?php $page++; ?>
 	    <h1>API für Entwickler</h1>
@@ -875,7 +875,7 @@ RewriteRule ^(.*)$ $1.gz [QSA,L]</pre>
 		<?php echo page(); ?>
         <h1>API für Entwickler</h1>
 	    <h2>Klassenhierarchie</h2>
-		<p class="center"><img src="images/classes.png" style="margin: 0 -60px;"></p>
+		<p class="center"><img src="images/classes.png" alt="" style="margin: 0 -60px;"></p>
     </div>
 
     <div class="step slide"<?php right(); ?> data-rotate-y="40">
@@ -1196,14 +1196,14 @@ class MyClass
     </div>
 </div>
 
-<a href="https://github.com/InfinitySoft/ThemePlus" target="_blank"
-	style="position: fixed; top: 0; right: 0; border: 0; z-index: 10;">
-	<img src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub">
-</a>
+<div style="position: absolute; top: 0; right: 0; border: 0; z-index: 1;"><a href="https://github.com/InfinitySoft/ThemePlus"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a></div>
 
-<script src="js/impress.js"></script>
-<script>impress().init();</script>
-<script>SyntaxHighlighter.all()</script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jmpress.js"></script>
+<script>
+	SyntaxHighlighter.all()
+	$('#impress').jmpress({ containerClass: "impress-enabled" });
+</script>
 
 </body>
 </html>
