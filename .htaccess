@@ -1,0 +1,2 @@
+RewriteCond %{HTTP_HOST} !^www\.themeplus\.de [NC]
+RewriteRule (.*) http://www.themeplus.de/$1 [R=301,L]
